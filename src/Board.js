@@ -175,6 +175,21 @@
         }
       }
       return false;
+
+      // //stays in the same row, but checks every column
+      // for(var i = 0; i < board.length; i++) {
+      //   if (this.hasMajorDiagonalConflictAt(i++, 0)) {
+      //     return true;
+      //   }
+      // }
+      // //stay in the same column, check every row
+      // for(i = 1; i < board.length; i++) {
+      //   if (this.hasMajorDiagonalConflictAt(0, i++)) {
+      //     return true;
+      //   }
+      // }
+
+      // return false;
     },
 
 
