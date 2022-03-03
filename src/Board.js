@@ -149,13 +149,13 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow, rowIndex) {
       //given major (a index for the column, at the starting point where the collision beings)
       //check each value at row +1 and column +1 values
       var board = this.rows();
       var count = 0;
 
-      for (var i = 0; i < board.length; i++) {
+      for (var i = rowIndex; i < board.length; i++) {
         var currentRow = board[i];
         if (currentRow[majorDiagonalColumnIndexAtFirstRow] === 1) {
           count++;
@@ -168,28 +168,28 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       //passes in each major index (starting from 2 - n) into hasMajorconflict function
-      var board = this.rows();
-      for (let i = (2 - board.length); i < board.length; i++) {
-        if (this.hasMajorDiagonalConflictAt(i)) {
+      // var board = this.rows();
+      // for (let i = (2 - board.length); i < board.length; i++) {
+      //   if (this.hasMajorDiagonalConflictAt(i)) {
+      //     return true;
+      //   }
+      // }
+      // return false;
+
+      //stays in the same row, but checks every column
+      for(let i = 0; i < this.rows().length; i++) {
+        if (this.hasMajorDiagonalConflictAt(i, 0)) {
           return true;
         }
       }
+      //stay in the same column, check every row
+      for(let j = 1; j < this.rows().length; j++) {
+        if (this.hasMajorDiagonalConflictAt(0, j)) {
+          return true;
+        }
+      }
+
       return false;
-
-      // //stays in the same row, but checks every column
-      // for(var i = 0; i < board.length; i++) {
-      //   if (this.hasMajorDiagonalConflictAt(i++, 0)) {
-      //     return true;
-      //   }
-      // }
-      // //stay in the same column, check every row
-      // for(i = 1; i < board.length; i++) {
-      //   if (this.hasMajorDiagonalConflictAt(0, i++)) {
-      //     return true;
-      //   }
-      // }
-
-      // return false;
     },
 
 
@@ -198,13 +198,13 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
-    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
+    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow, rowIndex) {
       //given major (a index for the column, at the starting point where the collision beings)
       //check each value at row +1 and column +1 values
       var board = this.rows();
       var count = 0;
 
-      for (var i = 0; i < board.length; i++) {
+      for (var i = rowIndex; i < board.length; i++) {
         var currentRow = board[i];
         if (currentRow[minorDiagonalColumnIndexAtFirstRow] === 1) {
           count++;
@@ -216,10 +216,14 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      //passes in each major index (starting from 2 - n) into hasMajorconflict function
-      var board = this.rows();
-      for (let i = (board.length + 1); i > 0; i--) {
-        if (this.hasMinorDiagonalConflictAt(i)) {
+      for(let i = this.rows().length; i > 0; i--) {
+        if (this.hasMinorDiagonalConflictAt(i, 0)) {
+          return true;
+        }
+      }
+      //stay in the same column, check every row
+      for(let j = 1; j < this.rows().length; j++) {
+        if (this.hasMinorDiagonalConflictAt(this.rows().length - 1, j)) {
           return true;
         }
       }
