@@ -83,9 +83,9 @@
       var rowToCheck = this.rows()[rowIndex];
       var count = 0;
       for (let i = 0; i < rowToCheck.length; i++) {
-        if(rowToCheck[i] === 1) {
+        if (rowToCheck[i] === 1) {
           count++;
-          if(count > 1) {
+          if (count > 1) {
             return true;
           }
         }
@@ -97,7 +97,7 @@
     hasAnyRowConflicts: function() {
       var board = this.rows();
       for (let i = 0; i < board.length; i++) {
-        if(this.hasRowConflictAt(i)) {
+        if (this.hasRowConflictAt(i)) {
           return true;
         }
       }
@@ -118,9 +118,9 @@
       //note: this.attributes.n = n. the size of the board (n x n).
       for (var i = 0; i < board.length; i++) {
         var currentRow = board[i];
-        if(currentRow[colIndex] === 1) {
+        if (currentRow[colIndex] === 1) {
           count++;
-          if(count > 1) {
+          if (count > 1) {
             return true;
           }
         }
@@ -135,7 +135,7 @@
       //for each number in the board
       for (var i = 0; i < boardSize; i++) {
         //check if each column has conflict or not.
-        if( this.hasColConflictAt(i) ) {
+        if (this.hasColConflictAt(i)) {
           //if there is a conflict, return true;
           return true;
         }
@@ -157,7 +157,7 @@
 
       for (var i = 0; i < board.length; i++) {
         var currentRow = board[i];
-        if(currentRow[majorDiagonalColumnIndexAtFirstRow] === 1) {
+        if (currentRow[majorDiagonalColumnIndexAtFirstRow] === 1) {
           count++;
         }
         majorDiagonalColumnIndexAtFirstRow++;
@@ -191,7 +191,7 @@
 
       for (var i = 0; i < board.length; i++) {
         var currentRow = board[i];
-        if(currentRow[minorDiagonalColumnIndexAtFirstRow] === 1) {
+        if (currentRow[minorDiagonalColumnIndexAtFirstRow] === 1) {
           count++;
         }
         minorDiagonalColumnIndexAtFirstRow--;
