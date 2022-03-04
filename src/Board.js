@@ -149,7 +149,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow, rowIndex) {
+    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow, rowIndex = 0) {
       //given major (a index for the column, at the starting point where the collision beings)
       //check each value at row +1 and column +1 values
       var board = this.rows();
@@ -198,7 +198,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
-    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow, rowIndex) {
+    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow, rowIndex = 0) {
       //given major (a index for the column, at the starting point where the collision beings)
       //check each value at row +1 and column +1 values
       var board = this.rows();
